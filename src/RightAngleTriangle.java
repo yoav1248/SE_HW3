@@ -13,7 +13,7 @@ public class RightAngleTriangle extends Shape {
 
     @Override
     public double perimeter() {
-        return width + height + Math.sqrt(width * width + height * height);
+        return width + height + Utils.norm(width, height);
     }
 
     @Override
@@ -24,5 +24,16 @@ public class RightAngleTriangle extends Shape {
     @Override
     public int getHeight() {
         return height;
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (int row = 0; row < height; row++) {
+            int rowSize = (int) ((double) (row + 1) * width / height);
+            result += " * ".repeat(rowSize) + "   ".repeat(width - rowSize);
+            result += '\n';
+        }
+        return result;
     }
 }

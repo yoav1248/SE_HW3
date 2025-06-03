@@ -20,7 +20,7 @@ public class Canvas {
         double sum = 0;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                if(shapeArray[row][col] != null)
+                if (shapeArray[row][col] != null)
                     sum += shapeArray[row][col].area();
             }
         }
@@ -31,7 +31,7 @@ public class Canvas {
         double sum = 0;
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                if(shapeArray[row][col] != null)
+                if (shapeArray[row][col] != null)
                     sum += shapeArray[row][col].perimeter();
             }
         }
@@ -61,8 +61,35 @@ public class Canvas {
         return maxHeight;
     }
 
+    /** returns a string corresponding to the shapes at the given row */
+    private String getRowString(int row) {
+        String rowString = "";
+
+        int maxHeight = getMaxHeight(row);
+        int maxWidth = getMaxWidth();
+
+        // subRow
+        for (int subRow = 0; subRow < maxHeight; subRow++) {
+            for (Shape shape : shapeArray[row]) {
+                if (shape != null && subRow < shape.getHeight()) {
+                    rowString += shape.toString().split("\n")[subRow];
+                    rowString += "   ";
+                } else {
+                    rowString += "   ".repeat(maxWidth);
+                }
+            }
+            rowString += '\n';
+        }
+        return rowString;
+    }
+
     @Override
     public String toString() {
-        return "{shapes}";
+        String result = "";
+        int maxWidth = getMaxWidth();
+        for (int row = 0; row < rows; row++) {
+            result += getRowString(row);
+        }
+        return result;
     }
 }

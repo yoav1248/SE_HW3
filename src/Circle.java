@@ -24,4 +24,22 @@ public class Circle extends Shape {
     public int getHeight() {
         return this.getWidth();
     }
+
+    @Override
+    public String toString() {
+        // center is at (radius, radius)
+        String result = "";
+        for (int i = 0; i < getWidth(); i++) {
+            for (int j = 0; j < getHeight(); j++) {
+                double dist = Utils.norm(i - radius, j - radius);
+                if (dist <= radius + 0.3) {
+                    result += " * ";
+                } else {
+                    result += "   ";
+                }
+            }
+            result += '\n';
+        }
+        return result;
+    }
 }
