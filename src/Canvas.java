@@ -40,9 +40,9 @@ public class Canvas {
 
     private int getMaxWidth() {
         int maxWidth = 0;
-        for(int row = 0; row < rows; row++) {
-            for(int col = 0; col < cols; col++) {
-                if(shapeArray[row][col] != null && shapeArray[row][col].getWidth() > maxWidth) {
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (shapeArray[row][col] != null && shapeArray[row][col].getWidth() > maxWidth) {
                     maxWidth = shapeArray[row][col].getWidth();
                 }
             }
@@ -61,21 +61,31 @@ public class Canvas {
         return maxHeight;
     }
 
-    /** returns a string corresponding to the shapes at the given row */
+    /**
+     * returns a string corresponding to the shapes at the given row, including the newline space after it.
+     */
     private String getRowString(int row) {
         String rowString = "";
 
         int maxHeight = getMaxHeight(row);
         int maxWidth = getMaxWidth();
 
-        // subRow
+        // subRow is indexing an actual row of output (ending with a newline)
+        // iterate over all rows relevant to our a row
         for (int subRow = 0; subRow < maxHeight; subRow++) {
             for (Shape shape : shapeArray[row]) {
-                if (shape != null && subRow < shape.getHeight()) {
-                    rowString += shape.toString().split("\n")[subRow];
-                    rowString += "   ";
+                if (shape != null) {
+                    // if there's a shape in that cell, adjust to the width of the shape (and add 1 for a space)
+                    if (subRow < shape.getHeight()) {
+                        // if the shape hits our subRow, get the part from shape's string
+                        rowString += shape.toString().split("\n")[subRow];
+                        rowString += "   ";
+                    } else {
+                        rowString += "   ".repeat(shape.getWidth() + 1);
+                    }
                 } else {
-                    rowString += "   ".repeat(maxWidth);
+                    // if no shape in that cell, adjust to maxWidth (and add 1 for space)
+                    rowString += "   ".repeat(maxWidth + 1);
                 }
             }
             rowString += '\n';
@@ -86,7 +96,6 @@ public class Canvas {
     @Override
     public String toString() {
         String result = "";
-        int maxWidth = getMaxWidth();
         for (int row = 0; row < rows; row++) {
             result += getRowString(row);
         }
