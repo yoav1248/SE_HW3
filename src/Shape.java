@@ -5,12 +5,12 @@ public abstract class Shape {
     public abstract int getHeight();
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null) {
+    public boolean equals(Object object) {
+        if (object == null) {
             return false;
         }
 
-        if (o.getClass() != this.getClass()) {
+        if (object.getClass() != this.getClass()) {
             return false;
         }
 

@@ -17,11 +17,11 @@ public class Circle extends Shape {
 
     @Override
     public int getWidth() {
-        return 0;
+        return 2 * radius + 1;
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return this.getWidth();
     }
 }
