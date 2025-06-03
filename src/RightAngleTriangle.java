@@ -13,7 +13,7 @@ public class RightAngleTriangle extends Shape {
 
     @Override
     public double perimeter() {
-        return 0;
+        return width + height + Math.sqrt(width * width + height * height);
     }
 
     @Override
