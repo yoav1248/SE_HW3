@@ -38,6 +38,29 @@ public class Canvas {
         return sum;
     }
 
+    private int getMaxWidth() {
+        int maxWidth = 0;
+        for(int row = 0; row < rows; row++) {
+            for(int col = 0; col < cols; col++) {
+                if(shapeArray[row][col] != null && shapeArray[row][col].getWidth() > maxWidth) {
+                    maxWidth = shapeArray[row][col].getWidth();
+                }
+            }
+        }
+        return maxWidth;
+    }
+
+    private int getMaxHeight(int row) {
+        int maxHeight = 0;
+        for (int col = 0; col < cols; col++) {
+            if (shapeArray[row][col] != null) {
+                int shapeHeight = shapeArray[row][col].getHeight();
+                maxHeight = maxHeight > shapeHeight ? maxHeight : shapeHeight;
+            }
+        }
+        return maxHeight;
+    }
+
     @Override
     public String toString() {
         return "{shapes}";
