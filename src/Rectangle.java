@@ -30,7 +30,7 @@ public class Rectangle extends Shape {
     public String toString() {
         String str = "";
         for (int rows = 0; rows < height; rows++) {
-            str = str.concat(" * ".repeat(width) + "\n");
+            str = str.concat(Utils.STAR.repeat(width) + "\n");
         }
         return str;
     }

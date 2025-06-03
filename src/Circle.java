@@ -33,9 +33,9 @@ public class Circle extends Shape {
             for (int j = 0; j < getHeight(); j++) {
                 double dist = Utils.norm(i - radius, j - radius);
                 if (dist <= radius + 0.3) {
-                    result += " * ";
+                    result += Utils.STAR;
                 } else {
-                    result += "   ";
+                    result += Utils.SPACE;
                 }
             }
             result += '\n';

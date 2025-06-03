@@ -79,13 +79,13 @@ public class Canvas {
                     if (subRow < shape.getHeight()) {
                         // if the shape hits our subRow, get the part from shape's string
                         rowString += shape.toString().split("\n")[subRow];
-                        rowString += "   ";
+                        rowString += Utils.SPACE;
                     } else {
-                        rowString += "   ".repeat(shape.getWidth() + 1);
+                        rowString += Utils.SPACE.repeat(shape.getWidth() + 1);
                     }
                 } else {
                     // if no shape in that cell, adjust to maxWidth (and add 1 for space)
-                    rowString += "   ".repeat(maxWidth + 1);
+                    rowString += Utils.SPACE.repeat(maxWidth + 1);
                 }
             }
             rowString += '\n';

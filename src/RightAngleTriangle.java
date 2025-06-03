@@ -31,7 +31,7 @@ public class RightAngleTriangle extends Shape {
         String result = "";
         for (int row = 0; row < height; row++) {
             int rowSize = (int) ((double) (row + 1) * width / height);
-            result += " * ".repeat(rowSize) + "   ".repeat(width - rowSize);
+            result += Utils.STAR.repeat(rowSize) + Utils.SPACE.repeat(width - rowSize);
             result += '\n';
         }
         return result;
