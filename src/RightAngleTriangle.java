@@ -31,6 +31,7 @@ public class RightAngleTriangle extends Shape {
         String result = "";
         for (int row = 0; row < height; row++) {
             int rowSize = (int) ((double) (row + 1) * width / height);
+            rowSize = Utils.max(rowSize, 1);  // ensure at least one star in per row
             result += Utils.STAR.repeat(rowSize) + Utils.SPACE.repeat(width - rowSize);
             result += '\n';
         }
