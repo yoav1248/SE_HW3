@@ -73,19 +73,23 @@ public class Canvas {
         // subRow is indexing an actual row of output (ending with a newline)
         // iterate over all rows relevant to our a row
         for (int subRow = 0; subRow < maxHeight; subRow++) {
-            for (Shape shape : shapeArray[row]) {
+            for (int col = 0; col < cols; col++) {
+                Shape shape = shapeArray[row][col];
                 if (shape != null) {
-                    // if there's a shape in that cell, adjust to the width of the shape (and add 1 for a space)
+                    // if there's a shape in that cell, adjust to the width of the shape
                     if (subRow < shape.getHeight()) {
                         // if the shape hits our subRow, get the part from shape's string
                         rowString += shape.toString().split("\n")[subRow];
-                        rowString += Utils.SPACE;
                     } else {
-                        rowString += Utils.SPACE.repeat(shape.getWidth() + 1);
+                        rowString += Utils.SPACE.repeat(shape.getWidth());
                     }
                 } else {
-                    // if no shape in that cell, adjust to maxWidth (and add 1 for space)
-                    rowString += Utils.SPACE.repeat(maxWidth + 1);
+                    // if no shape in that cell, adjust to maxWidth
+                    rowString += Utils.SPACE.repeat(maxWidth);
+                }
+                // if not at the end, add a space (so it's just spaces between the shapes)
+                if (col != cols - 1) {
+                    rowString += Utils.SPACE;
                 }
             }
             rowString += '\n';
@@ -97,7 +101,7 @@ public class Canvas {
     public String toString() {
         String result = "";
         for (int row = 0; row < rows; row++) {
-            result += getRowString(row);
+            result += getRowString(row) + '\n';
         }
         return result;
     }
