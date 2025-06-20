@@ -10,6 +10,7 @@ public class Main {
         test7();
         test8();
         test9();
+        test10();
     }
 
     public static void test1() {
@@ -153,5 +154,37 @@ public class Main {
         System.out.println("Canvas Total Perimeter: " + canvas.getTotalPerimeter());
 
         System.out.println("------------------------------------");
+    }
+
+    public static void test10() {
+        System.out.println("--- Test 10 - Shape equals ---");
+        Shape[] shapes = {
+                null,
+
+                new Square(10),
+                new Rectangle(10, 10),
+                new Circle(10),
+                new RightAngleTriangle(10, 10),
+
+                new Square(10),
+                new Rectangle(10, 10),
+                new Circle(10),
+                new RightAngleTriangle(10, 10),
+
+                new Square(8),
+                new Rectangle(8, 8),
+                new Circle(5),
+                new RightAngleTriangle(2, 2)};
+
+        for (Shape shape1: shapes) {
+            for (Shape shape2: shapes) {
+                if (shape1 == null) {
+                    System.out.print("2 ");
+                } else {
+                    System.out.print(shape1.equals(shape2) ? "1 " : "0 ");
+                }
+            }
+            System.out.println();
+        }
     }
 }
