@@ -105,4 +105,34 @@ public class Canvas {
         }
         return result;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof Canvas)) {
+            return false;
+        }
+
+        Canvas otherCanvas = (Canvas) other;
+
+        if (this.cols != otherCanvas.cols || this.rows != otherCanvas.rows) {
+            return false;
+        }
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                Shape thisShape = shapeArray[i][j];
+                Shape otherShape = otherCanvas.shapeArray[i][j];
+                if (thisShape == null) {
+                    if (otherShape != null) {
+                        return false;
+                    }
+                } else {
+                    if (!(thisShape.equals(otherShape))) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }
