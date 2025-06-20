@@ -55,7 +55,7 @@ public class Canvas {
         for (int col = 0; col < cols; col++) {
             if (shapeArray[row][col] != null) {
                 int shapeHeight = shapeArray[row][col].getHeight();
-                maxHeight = maxHeight > shapeHeight ? maxHeight : shapeHeight;
+                maxHeight = Utils.max(maxHeight, shapeHeight);
             }
         }
         return maxHeight;
