@@ -26,6 +26,13 @@ public class Circle extends Shape {
     }
 
     @Override
+    protected boolean isOfSubclassWithEqualFields(Shape other) {
+        return (other instanceof Circle) &&
+                this.radius == ((Circle) other).radius;
+    }
+
+
+    @Override
     public String toString() {
         // center is at (radius, radius)
         String result = "";

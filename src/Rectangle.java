@@ -27,6 +27,13 @@ public class Rectangle extends Shape {
     }
 
     @Override
+    protected boolean isOfSubclassWithEqualFields(Shape other) {
+        return (other instanceof Rectangle) &&
+                this.width == ((Rectangle) other).width &&
+                this.height == ((Rectangle) other).height;
+    }
+
+    @Override
     public String toString() {
         String str = "";
         for (int rows = 0; rows < height; rows++) {

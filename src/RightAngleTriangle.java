@@ -27,6 +27,14 @@ public class RightAngleTriangle extends Shape {
     }
 
     @Override
+    protected boolean isOfSubclassWithEqualFields(Shape other) {
+        return (other instanceof RightAngleTriangle) &&
+                this.width == ((RightAngleTriangle) other).width &&
+                this.height == ((RightAngleTriangle) other).height;
+    }
+
+
+    @Override
     public String toString() {
         String result = "";
         for (int row = 0; row < height; row++) {
