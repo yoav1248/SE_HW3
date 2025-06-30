@@ -1,3 +1,6 @@
+/**
+ * represents a 2d array of shapes
+ */
 public class Canvas {
     private final int rows, cols;
     private final Shape[][] shapeArray;
@@ -8,14 +11,23 @@ public class Canvas {
         this.shapeArray = new Shape[rows][cols];
     }
 
+    /**
+     * inserts a shape at the given cell in the canvas
+     */
     public void addShape(Shape s, int row, int col) {
         shapeArray[row][col] = s;
     }
 
+    /**
+     * removes a shape from the given cell in the canvas
+     */
     public void removeShape(int row, int col) {
         shapeArray[row][col] = null;
     }
 
+    /**
+     * computes the total area of all shapes in the canvas
+     */
     public double getTotalArea() {
         double sum = 0;
         for (int row = 0; row < rows; row++) {
@@ -27,6 +39,9 @@ public class Canvas {
         return sum;
     }
 
+    /**
+     * computes the total perimeter of all shapes in the canvas
+     */
     public double getTotalPerimeter() {
         double sum = 0;
         for (int row = 0; row < rows; row++) {
@@ -38,6 +53,9 @@ public class Canvas {
         return sum;
     }
 
+    /**
+     * returns the maximum width of a shape in a given row.
+     */
     private int getMaxWidth() {
         int maxWidth = 0;
         for (int row = 0; row < rows; row++) {
@@ -50,6 +68,9 @@ public class Canvas {
         return maxWidth;
     }
 
+    /**
+     * returns the maximum height of a shape in a given row.
+     */
     private int getMaxHeight(int row) {
         int maxHeight = 0;
         for (int col = 0; col < cols; col++) {
